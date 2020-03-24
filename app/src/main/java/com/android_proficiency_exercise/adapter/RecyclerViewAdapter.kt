@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.android_proficiency_exercise.R
 import com.android_proficiency_exercise.model.NewsItem
+import com.bumptech.glide.Glide
 
 class RecyclerViewAdapter(
     newsItems: List<NewsItem>,
@@ -37,6 +38,17 @@ class RecyclerViewAdapter(
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.newsItemTitle.setText(newsItems.get(position).title)
         holder.newsItemDescription.setText(newsItems.get(position).description)
+        val imageUrlString = newsItems.get(position).imageUrl
+
+        var imageUrl: String? = null
+
+        if (imageUrlString != "") {
+            imageUrl = imageUrlString?.replace("http", "https")
+        }
+
+        Glide.with(context)
+            .load(imageUrl)
+            .into(holder.newsItemImageView)
     }
 
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

@@ -18,7 +18,7 @@ import com.android_proficiency_exercise.view_model.MainViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var newsItems: ArrayList<NewsItem>
+//    private lateinit var newsItems: ArrayList<NewsItem>
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
