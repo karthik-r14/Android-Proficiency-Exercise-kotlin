@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
             internetUtil.connectivityAvailable()
 
             if (internetUtil.isInternetConnectivity) {
-                Toast.makeText(applicationContext, "Internet is Available", LENGTH_LONG).show()
+                Toast.makeText(applicationContext, getString(R.string.internet_available_msg), LENGTH_LONG).show()
             } else {
-                Toast.makeText(applicationContext, "Internet is Not Available", LENGTH_LONG).show()
+                Toast.makeText(applicationContext, getString(R.string.internet_not_available_msg), LENGTH_LONG).show()
             }
         }
     }

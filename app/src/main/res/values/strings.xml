@@ -4,4 +4,6 @@
     <string name="sample_title_msg">Sample Title</string>
     <string name="sample_description_msg">Sample Description</string>
     <string name="sample_image_msg">Sample Image</string>
+    <string name="internet_available_msg">Internet is Available</string>
+    <string name="internet_not_available_msg">Internet is Not Available</string>
 </resources>
