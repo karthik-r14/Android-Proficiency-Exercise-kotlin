@@ -18,7 +18,8 @@ import com.android_proficiency_exercise.view_model.MainViewModel
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-//    private lateinit var newsItems: ArrayList<NewsItem>
+
+    //    private lateinit var newsItems: ArrayList<NewsItem>
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +50,11 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.newsItems.observe(this, Observer { newsItems ->
             populateRecyclerView(newsItems)
+        })
+
+        viewModel.actionBarTitle.observe(this, Observer { actionBarTitle ->
+            val actionBar = supportActionBar
+            actionBar!!.title = actionBarTitle
         })
     }
 

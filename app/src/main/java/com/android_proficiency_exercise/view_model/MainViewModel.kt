@@ -16,10 +16,12 @@ import retrofit2.Response
 
 class MainViewModel : ViewModel() {
     val newsItems = MutableLiveData<ArrayList<NewsItem>>()
+    val actionBarTitle = MutableLiveData<String>()
 
     init {
         Log.d(MainViewModel::class.simpleName, "Main view model is created")
         newsItems.value = ArrayList()
+        actionBarTitle.value = "Android-Proficiency-Exercise"
     }
 
     override fun onCleared() {
@@ -27,9 +29,9 @@ class MainViewModel : ViewModel() {
         Log.d(MainViewModel::class.simpleName, "Main view model is destroyed")
     }
 
-    fun setNewsItems(newsItems: java.util.ArrayList<NewsItem>) {
-        this.newsItems.value = newsItems
-    }
+//    fun setNewsItems(newsItems: java.util.ArrayList<NewsItem>) {
+//        this.newsItems.value = newsItems
+//    }
 
     fun getNewsItemsFromServer(context: Context) {
         NewsApi.retrofitService.getNewsItems().enqueue(object : Callback<NewsItemResponse> {
@@ -42,6 +44,7 @@ class MainViewModel : ViewModel() {
                 response: Response<NewsItemResponse>
             ) {
                 newsItems.value = response.body()?.newsItems as ArrayList<NewsItem>?
+                actionBarTitle.value = response.body()?.title
             }
         })
     }
