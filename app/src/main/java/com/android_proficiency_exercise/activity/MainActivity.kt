@@ -12,12 +12,14 @@ import com.android_proficiency_exercise.util.InternetUtil
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(
             this,
             R.layout.activity_main
         )
+
         binding.refreshButton.setOnClickListener {
             val internetUtil = InternetUtil(applicationContext)
             internetUtil.connectivityAvailable()
