@@ -6,4 +6,5 @@
     <string name="sample_image_msg">Sample Image</string>
     <string name="internet_available_msg">Internet is Available</string>
     <string name="internet_not_available_msg">Internet is Not Available</string>
+    <string name="failure_to_load_data_msg">Failed to load data</string>
 </resources>

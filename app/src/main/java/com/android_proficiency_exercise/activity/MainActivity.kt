@@ -23,10 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(
-            this,
-            R.layout.activity_main
-        )
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
@@ -61,10 +58,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadNewsItemsList() {
-        newsItems = ArrayList()
-        newsItems.add(NewsItem("Title 1", "Description1", "Image url1"))
-        newsItems.add(NewsItem("Title 2", "Description2", "Image url2"))
-        newsItems.add(NewsItem("Title 3", "Description3", "Image url3"))
-        viewModel.setNewsItems(newsItems)
+//        newsItems = ArrayList()
+//        newsItems.add(NewsItem("Title 1", "Description1", "Image url1"))
+//        newsItems.add(NewsItem("Title 2", "Description2", "Image url2"))
+//        newsItems.add(NewsItem("Title 3", "Description3", "Image url3"))
+//        viewModel.setNewsItems(newsItems)
+        viewModel.getNewsItemsFromServer(applicationContext)
     }
 }
