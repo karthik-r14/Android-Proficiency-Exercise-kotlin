@@ -53,8 +53,8 @@ class RecyclerViewAdapter(
             .load(imageUrl)
             .apply(
                 RequestOptions()
-                    .placeholder(R.mipmap.ic_launcher_round)
-                    .error(R.mipmap.ic_launcher_round)
+                    .placeholder(R.drawable.loading_image)
+                    .error(R.drawable.error_image)
             )
             .into(holder.newsItemImageView)
     }
