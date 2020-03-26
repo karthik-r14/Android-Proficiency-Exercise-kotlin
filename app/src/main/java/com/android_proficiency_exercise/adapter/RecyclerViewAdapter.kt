@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.android_proficiency_exercise.R
 import com.android_proficiency_exercise.model.NewsItem
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 class RecyclerViewAdapter(
     newsItems: List<NewsItem>,
@@ -43,11 +45,17 @@ class RecyclerViewAdapter(
         var imageUrl: String? = null
 
         if (imageUrlString != "") {
-            imageUrl = imageUrlString?.replace("http", "https")
+//            imageUrl = imageUrlString?.replace("http", "https")
+            imageUrl = imageUrlString?.toUri()?.buildUpon()?.scheme("https")?.build().toString()
         }
 
         Glide.with(context)
             .load(imageUrl)
+            .apply(
+                RequestOptions()
+                    .placeholder(R.mipmap.ic_launcher_round)
+                    .error(R.mipmap.ic_launcher_round)
+            )
             .into(holder.newsItemImageView)
     }
 
