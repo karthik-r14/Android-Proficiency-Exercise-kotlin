@@ -36,7 +36,11 @@ class MainViewModel : ViewModel() {
     fun getNewsItemsFromServer(context: Context) {
         NewsApi.retrofitService.getNewsItems().enqueue(object : Callback<NewsItemResponse> {
             override fun onFailure(call: Call<NewsItemResponse>, t: Throwable) {
-                Toast.makeText(context, context.getString(R.string.failure_to_load_data_msg) + t.message.toString(), LENGTH_LONG).show()
+                Toast.makeText(
+                    context,
+                    context.getString(R.string.failure_to_load_data_msg) + t.message.toString(),
+                    LENGTH_LONG
+                ).show()
             }
 
             override fun onResponse(
@@ -47,5 +51,22 @@ class MainViewModel : ViewModel() {
                 actionBarTitle.value = response.body()?.title
             }
         })
+    }
+
+    fun onRefreshButtonClick(internetIsAvailable: Boolean, context: Context) {
+        if (internetIsAvailable) {
+            Toast.makeText(
+                context,
+                context.getString(R.string.internet_available_msg),
+                LENGTH_LONG
+            ).show()
+            getNewsItemsFromServer(context)
+        } else {
+            Toast.makeText(
+                context,
+                context.getString(R.string.internet_not_available_msg),
+                LENGTH_LONG
+            ).show()
+        }
     }
 }
